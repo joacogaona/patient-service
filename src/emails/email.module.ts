@@ -5,6 +5,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { Notification } from '../notifications/entities/notification.entity';
 import { EmailProcessor } from './email.processor';
 import { createTransport } from 'nodemailer';
+import { ConfigService } from '@nestjs/config';
 
 @Module({
   imports: [
@@ -18,14 +19,16 @@ import { createTransport } from 'nodemailer';
     EmailProcessor,
     {
       provide: 'MAIL_TRANSPORTER',
-      useValue: createTransport({
-        host: 'sandbox.smtp.mailtrap.io',
-        port: 2525,
-        auth: {
-          user: 'eabe5b9c31c2d0',
-          pass: 'fe64163c934a5d',
-        },
-      }),
+      useFactory: (configService: ConfigService) =>
+        createTransport({
+          host: configService.get<string>('NODEMAILER_HOST'),
+          port: configService.get<number>('NODEMAILER_PORT'),
+          auth: {
+            user: configService.get<string>('NODEMAILER_USER'),
+            pass: configService.get<string>('NODEMAILER_PASS'),
+          },
+        }),
+      inject: [ConfigService],
     },
   ],
   exports: [EmailService],

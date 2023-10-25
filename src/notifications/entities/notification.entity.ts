@@ -1,3 +1,4 @@
+import { NotificationChannel } from 'src/notification-channels/entities/notification-channel.entity';
 import { Patient } from 'src/patients/entities/patient.entity';
 import {
   Column,
@@ -29,4 +30,7 @@ export class Notification {
 
   @ManyToOne(() => Patient, (patient) => patient.id)
   patient: Patient;
+
+  @ManyToOne(() => NotificationChannel)
+  channel: NotificationChannel;
 }

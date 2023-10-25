@@ -2,6 +2,10 @@
 /dist
 /node_modules
 mysql
+.env
+yarn.lock
+redis-data/dump.rdb
+
 
 # Logs
 logs
