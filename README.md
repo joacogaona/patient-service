@@ -1,52 +1,42 @@
-Estoy usando synchronize:true que solo se deberia usar en desarrollo
-Patron de diseño repositorio
+🚀 Patient Service API
 
-## Description
+This is a backend service built with Nest.js which provides functionality for patient management and sends out emails asynchronously.
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+🛠 Tech Stack:
 
-## Installation
+Main: Node.js, Nest.js(with TypeScript)
+Database: TypeOrm (MySQL)
+Caching & Message Queue: Redis, Bull
+Email Service: Nodemailer
 
-```bash
-$ pnpm install
-```
+🚦 Getting Started:
 
-## Running the app
+- Setup Environment Variables:
+  Duplicate the .env.example file and rename it to .env. Fill the variables with the appropriate values provided to you.
 
-```bash
-# development
-$ pnpm run start
+- Ensure Docker is Running:
+  Before proceeding, make sure you have Docker running on your system.
 
-# watch mode
-$ pnpm run start:dev
+- Build and Run with Docker:
+  Execute the following commands in order:
 
-# production mode
-$ pnpm run start:prod
-```
+docker-compose build
+docker-compose up
 
-## Test
+This will create and initialize the MySQL database, a Redis instance, and connect them to the API.
 
-```bash
-# unit tests
-$ pnpm run test
+🔍 Main Functionality:
 
-# e2e tests
-$ pnpm run test:e2e
+When a request is made to the Patient controller, a new patient record is added to the MySQL database. Subsequently, an event is sent to a queue (handled by Bull and Redis) which triggers an asynchronous email sending process.
 
-# test coverage
-$ pnpm run test:cov
-```
+📦 Dependencies Explanation:
 
-## Support
+@nestjs-modules/mailer, nodemailer: Enables email functionality, used to send out notifications or info to users.
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+@nestjs/bull, bull: Provides job & message queue functionality for tasks like sending out emails asynchronously.
 
-## Stay in touch
+@nestjs/typeorm, mysql2: Allows the API to interact with the MySQL database.
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+dotenv: Loads environment variables from the .env file.
 
-## License
-
-Nest is [MIT licensed](LICENSE).
+class-transformer, class-validator: Used for data validation and transformation in the DTOs (Data Transfer Objects).
