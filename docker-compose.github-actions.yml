@@ -50,7 +50,7 @@ services:
       CORS_ORIGIN: ${CORS_ORIGIN}
 
   e2e-tests:
-    image: nestjs_container   # Use the image built for nestjs-api
+    build: .
     command: ["yarn", "test:e2e"]
     depends_on:
       - nestjs-api
