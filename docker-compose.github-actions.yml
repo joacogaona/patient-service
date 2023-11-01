@@ -5,10 +5,10 @@ services:
     container_name: mysql_db
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: ${{ secrets.MYSQL_ROOT_PASSWORD }}
-      MYSQL_DATABASE: ${{ secrets.MYSQL_DATABASE }}
-      MYSQL_USER: ${{ secrets.MYSQL_USER }}
-      MYSQL_PASSWORD: ${{ secrets.MYSQL_PASSWORD }}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
     volumes:
       - ./mysql:/var/lib/mysql
     ports:
@@ -34,17 +34,17 @@ services:
     environment:
       DATABASE_HOST: mysql
       DATABASE_PORT: 3306
-      DATABASE_NAME: ${{ secrets.MYSQL_DATABASE }}
-      DATABASE_USER: ${{ secrets.MYSQL_USER }}
-      DATABASE_PASSWORD: ${{ secrets.MYSQL_PASSWORD }}
+      DATABASE_NAME: ${MYSQL_DATABASE}
+      DATABASE_USER: ${MYSQL_USER}
+      DATABASE_PASSWORD: ${MYSQL_PASSWORD}
       REDIS_HOST: redis
       REDIS_PORT: 6379
-      EMAIL_SMTP_HOST: ${{ secrets.EMAIL_SMTP_HOST }}
-      EMAIL_USER: ${{ secrets.EMAIL_USER }}
-      EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
-      NODEMAILER_HOST: ${{ secrets.NODEMAILER_HOST }}
-      NODEMAILER_PORT: ${{ secrets.NODEMAILER_PORT }}
-      NODEMAILER_USER: ${{ secrets.NODEMAILER_USER }}
-      NODEMAILER_PASS: ${{ secrets.NODEMAILER_PASS }}
+      EMAIL_SMTP_HOST: ${EMAIL_SMTP_HOST}
+      EMAIL_USER: ${EMAIL_USER}
+      EMAIL_PASSWORD: ${EMAIL_PASSWORD}
+      NODEMAILER_HOST: ${NODEMAILER_HOST}
+      NODEMAILER_PORT: ${NODEMAILER_PORT}
+      NODEMAILER_USER: ${NODEMAILER_USER}
+      NODEMAILER_PASS: ${NODEMAILER_PASS}
       APP_PORT: 3001
-      CORS_ORIGIN: ${{ secrets.CORS_ORIGIN }}
+      CORS_ORIGIN: ${CORS_ORIGIN}

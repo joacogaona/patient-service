@@ -41,6 +41,19 @@ jobs:
 
       - name: Build Docker Compose
         run: docker-compose -f docker-compose.github-actions.yml up --build -d
+        env:
+          MYSQL_ROOT_PASSWORD: ${{ secrets.MYSQL_ROOT_PASSWORD }}
+          MYSQL_DATABASE: ${{ secrets.MYSQL_DATABASE }}
+          MYSQL_USER: ${{ secrets.MYSQL_USER }}
+          MYSQL_PASSWORD: ${{ secrets.MYSQL_PASSWORD }}
+          EMAIL_SMTP_HOST: ${{ secrets.EMAIL_SMTP_HOST }}
+          EMAIL_USER: ${{ secrets.EMAIL_USER }}
+          EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
+          NODEMAILER_HOST: ${{ secrets.NODEMAILER_HOST }}
+          NODEMAILER_PORT: ${{ secrets.NODEMAILER_PORT }}
+          NODEMAILER_USER: ${{ secrets.NODEMAILER_USER }}
+          NODEMAILER_PASS: ${{ secrets.NODEMAILER_PASS }}
+          CORS_ORIGIN: ${{ secrets.CORS_ORIGIN }}
 
       - name: Run e2e tests
         run: docker-compose -f docker-compose.e2e.yml up --build e2e-tests
