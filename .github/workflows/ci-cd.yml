@@ -56,4 +56,4 @@ jobs:
           CORS_ORIGIN: ${{ secrets.CORS_ORIGIN }}
 
       - name: Tear down Docker Compose
-        run: docker-compose down
+        run: docker-compose -f docker-compose.github-actions.yml down
