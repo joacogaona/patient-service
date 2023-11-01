@@ -48,3 +48,26 @@ services:
       NODEMAILER_PASS: ${NODEMAILER_PASS}
       APP_PORT: 3001
       CORS_ORIGIN: ${CORS_ORIGIN}
+
+  e2e-tests:
+    image: nestjs_container   # Use the image built for nestjs-api
+    command: ["yarn", "test:e2e"]
+    depends_on:
+      - nestjs-api
+    environment:
+      DATABASE_HOST: mysql
+      DATABASE_PORT: 3306
+      DATABASE_NAME: ${MYSQL_DATABASE}
+      DATABASE_USER: ${MYSQL_USER}
+      DATABASE_PASSWORD: ${MYSQL_PASSWORD}
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+      EMAIL_SMTP_HOST: ${EMAIL_SMTP_HOST}
+      EMAIL_USER: ${EMAIL_USER}
+      EMAIL_PASSWORD: ${EMAIL_PASSWORD}
+      NODEMAILER_HOST: ${NODEMAILER_HOST}
+      NODEMAILER_PORT: ${NODEMAILER_PORT}
+      NODEMAILER_USER: ${NODEMAILER_USER}
+      NODEMAILER_PASS: ${NODEMAILER_PASS}
+      APP_PORT: 3001
+      CORS_ORIGIN: ${CORS_ORIGIN}

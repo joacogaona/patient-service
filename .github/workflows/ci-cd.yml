@@ -55,8 +55,5 @@ jobs:
           NODEMAILER_PASS: ${{ secrets.NODEMAILER_PASS }}
           CORS_ORIGIN: ${{ secrets.CORS_ORIGIN }}
 
-      - name: Run e2e tests
-        run: docker-compose -f docker-compose.e2e.yml up --build e2e-tests
-
       - name: Tear down Docker Compose
         run: docker-compose down
