@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { NotificationService } from './notification.service';
-import { EmailsModule } from 'src/emails/email.module';
-import { NotificationChannel } from 'src/notification-channels/entities/notification-channel.entity';
+import { EmailsModule } from '../../emails/email.module';
+import { NotificationChannel } from '../../notification-channels/entities/notification-channel.entity';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
 @Module({

@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { EmailService } from 'src/emails/email.service';
-import { NotificationChannel } from 'src/notification-channels/entities/notification-channel.entity';
+import { EmailService } from '../../emails/email.service';
+import { NotificationChannel } from '../../notification-channels/entities/notification-channel.entity';
 import { Repository } from 'typeorm';
 
 @Injectable()

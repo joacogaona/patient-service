@@ -4,7 +4,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Patient } from './entities/patient.entity';
 import { Repository } from 'typeorm';
 import { EmailService } from '../emails/email.service';
-import { NotificationService } from 'src/notifications/entities/notification.service';
+import { NotificationService } from '../notifications/entities/notification.service';
 
 @Injectable()
 export class PatientsService {

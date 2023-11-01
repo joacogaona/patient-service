@@ -1,4 +1,4 @@
-import { Notification } from 'src/notifications/entities/notification.entity';
+import { Notification } from '../../notifications/entities/notification.entity';
 import { Entity, Column, DeleteDateColumn, OneToMany } from 'typeorm';
 
 @Entity()

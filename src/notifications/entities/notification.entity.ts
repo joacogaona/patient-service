@@ -1,5 +1,5 @@
-import { NotificationChannel } from 'src/notification-channels/entities/notification-channel.entity';
-import { Patient } from 'src/patients/entities/patient.entity';
+import { NotificationChannel } from '../../notification-channels/entities/notification-channel.entity';
+import { Patient } from '../../patients/entities/patient.entity';
 import {
   Column,
   CreateDateColumn,

@@ -20,7 +20,6 @@ services:
       - "6379:6379"
     volumes:
       - ./redis-data:/data
-  
   nestjs-api:
     command: ["wait-for-it", "mysql:3307", "--","yarn", "run", "start:dev"]
     build: .
@@ -28,6 +27,19 @@ services:
     ports:
       - "3001:3001"
     depends_on:
+      - mysql
+      - redis
+    env_file:
+      - .env
+  e2e-tests:
+    image: node:16
+    container_name: e2e_tests
+    command: ["yarn", "test:e2e"]
+    working_dir: /usr/src/app
+    volumes:
+      - .:/usr/src/app
+    depends_on:
+      - nestjs-api
       - mysql
       - redis
     env_file:

@@ -5,7 +5,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { Patient } from './entities/patient.entity';
 import { Notification } from '../notifications/entities/notification.entity';
 import { EmailsModule } from '../emails/email.module';
-import { NotificationModule } from 'src/notifications/entities/notification.module';
+import { NotificationModule } from '../notifications/entities/notification.module';
 
 @Module({
   imports: [
