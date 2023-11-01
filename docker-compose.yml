@@ -31,18 +31,3 @@ services:
       - redis
     env_file:
       - .env
-  e2e-tests:
-    image: node:16
-    container_name: e2e_tests
-    command: ["yarn", "test:e2e"]
-    working_dir: /usr/src/app
-    volumes:
-      - .:/usr/src/app
-    depends_on:
-      - nestjs-api
-      - mysql
-      - redis
-    env_file:
-      - .env
-
-    
